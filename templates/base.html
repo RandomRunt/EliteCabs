@@ -1,0 +1,73 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% block page_title %}{% endblock %} - Elite Cabs
+{% endblock %}
+
+{% block navbar %}
+    <style>
+  .navbar {
+      background-color: #2f2f2f;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important; /* colour : Green with Blue */
+  }
+    /* Footer */
+  .bg-footer {
+      padding-top: 20px;
+      padding-bottom: 30px;
+      background-color: #2f2f2f; /* Black Gray */
+      color: #ffffff;
+  }
+    </style>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a style="font-size:145%;font-weight: inherit;letter-spacing: 3px" class="navbar-brand" href="/">Elite Cabs</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""{{ 'active' if active_page == 'home' else ''}}><a href="/home">Home</a></li>
+                <li class=""{{ 'active' if active_page == 'fareEstimate' else ''}}><a href="/fare">Book a Cab</a></li>
+                <li class=""{{ 'active' if active_page == 'contact' else ''}}><a href="/contact">Contact Us</a></li>
+                <li class=""{{ 'active' if active_page == 'login' else ''}}><a href="/login"><img src="static/loginImage.jpg" alt="login image" style="height: 24px"/></a></li>
+
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% block page_content%} {% endblock %}
+    </div>
+    <footer class="bg-footer container-fluid">
+    <div class="container">
+    <div class="col-lg-6">
+        <h3> Elite Cabs</h3>
+        <p style="color: #d3d3d3">Elite cabs was established in 2020 and has proudly served the people of Sydney for over 0.1 years. Our modern fleet of vehicles consist of predominantly hybrid taxis which are environmentally friendly and very comfortable to ride in. We welcome you to use our friendly and reliable service!</p>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-4">
+        <h3>Contact Information</h3>
+            <p>
+                <span class="glyphicon glyphicon-home"></span>&ensp; Sydney, NSW 2010, AU</p>
+            <p>
+                <span class="glyphicon glyphicon-envelope"></span>&ensp; enquiries@elitecabs.com</p>
+            <p>
+                <span class="glyphicon glyphicon-earphone"></span>&ensp; (02) 9876 9876</p>
+            <p>
+                <span class="glyphicon glyphicon-print"></span>&ensp; (02) 9876 9876</p>
+    </div>
+    </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% set active_page = "contact" %}
+{% block page_title %} Thank You {% endblock %}
+{% block content %}
+<style>
+    p {font-size: 20px;}
+    .bookButton{
+        padding-bottom: 30px;
+    }
+    .bg1 {
+        padding-top: 100px;
+        padding-bottom: 190px;
+
+    }
+</style>
+
+<div class="bg1 container" style="text-align: center">
+    <h1 style="font-size: 300%">
+        Thank you for sending feedback.
+    </h1>
+    <br>
+    <span class="glyphicon glyphicon-ok-circle" style="color:green; font-size: 750%;">
+    </span>
+</div>
+
+{{ super() }}
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% set active_page = "fareEstimate" %}
+{% block page_title %} Fare Estimate {% endblock %}
+{% block content %}
+<style>
+  p {font-size: 20px;}
+  /* background styling */
+  .bg-1 {
+      padding-top: 40px;
+      background-color: #1abc9c; /* Green */
+      color: #000000;
+  }
+  .bg-2 {
+      padding-top: 55px;
+      padding-bottom: 34px;
+      background-color: #1abc9c; /* Green */
+  }
+  .bg-3 {
+      padding-top: 20px;
+      padding-bottom: 30px;
+      background-color: #ffffff; /* Green */
+      color: #000000;
+  }
+  .bg-4 {
+      background-color: #2f2f2f; /* Grey */
+      color: #000000;
+  }
+  /* image position adjustment */
+  .moveimage {
+    position: relative;
+    top: 14px;
+  }
+/* hover text for sedan */
+  .img__wrap {
+  position: relative;
+}
+
+.img__description_layer {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  background: rgb(115, 115, 115, 0.9);
+  color: #ffffff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description_layer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.img__description {
+  transition: .2s;
+  transform: translateY(1em);
+}
+
+.img__wrap:hover .img__description {
+  transform: translateY(0);
+}
+</style>
+
+<div class="container-fluid bg-1 text-center">
+    <h1 style="font-size: 320%;">Choose your way to ride</h1>
+</div>
+
+<!-- Taxi Type Input -->
+<div class="container-fluid bg-2 text-center">
+    <div class="container">
+        <div class="col-lg-4 img__wrap">
+            <img class="moveimage" src="/static/taxiSedan.png" alt = "sedan" style="width: 300px; height: 132px"/>
+            <div class="img__description_layer"><p class="img__description">Hire: $3.60 <br> Rate per km: $2.19</p></div>
+        </div>
+        <div class="col-lg-4 img__wrap">
+            <img src="/static/taxiSUV.png" alt = "cuv" style="width: 280px"/>
+            <div class="img__description_layer"><p class="img__description">Hire: $3.60 <br> Rate per km: $2.19</p></div>
+        </div>
+        <div class="col-lg-4 img__wrap">
+            <img src="/static/taxiVan.png" alt = "van" style="width: 270px"/>
+            <div class="img__description_layer"><p class="img__description">Hire: $3.60 <br> Rate per km: $2.19</p></div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="col-lg-4 ">
+            <h3>Standard Taxi</h3>
+        </div>
+        <div class="col-lg-4">
+            <h3>Family Taxi</h3>
+        </div>
+        <div class="col-lg-4">
+            <h3>Maxi Taxi</h3>
+        </div>
+    </div>
+    <div class="container radio">
+        <form name="myForm" action="" method="post" onsubmit="">
+            <div class="col-lg-4">
+                <label class="radio-inline">
+                    <input type="radio" name="options" id="option1" value="option1" checked>
+                </label>
+            </div>
+            <div class="col-lg-4">
+                <label class="radio-inline">
+                    <input type="radio" name="options" id="option2" value="option2">
+                </label>
+            </div>
+            <div class="col-lg-4">
+                <label class="radio-inline">
+                    <input type="radio" name="options" id="option3" value="option3">
+                </label>
+            </div>
+            <div style="text-align: center">
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Fare Estimator Input -->
+    <div class="container bg-3">
+        <div class="col-lg-6">
+        <h2> Fare Estimate </h2>
+        <form action ="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.tripOrigin.label }}<br>
+            {{ form.tripOrigin(size = 30)   }}
+        </p>
+        <p>
+            {{ form.tripDestination.label }}<br>
+            {{ form.tripDestination(size = 30) }}
+        </p>
+        <p>
+            {% if error %}
+            <p class="error">
+            {{ error }}
+            {% endif %}
+        </p>
+        <p>
+                {{ form.submit() }}
+        </p>
+        <!-- Error Message -->
+        {% if error %}
+        <p class="error">
+        {{ error }}
+        <br>
+        {% endif %}
+        </form>
+        </div>
+
+
+    </div>
+
+    {{ super() }}
+{% endblock %}

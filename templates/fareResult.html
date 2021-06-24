@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% set active_page = "fareEstimate" %}
+{% block page_title %} Fare Result {% endblock %}
+{% block content %}
+<style>
+    p {font-size: 20px;}
+    .bookButton{
+        padding-bottom: 30px;
+    }
+    .bg1 {
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+</style>
+
+<div class="bg1 container">
+    <div class="text-center">
+    <img src="/static/stockYellowTaxi.svg" alt="Stock Yellow Taxi Vector" style="width: 300px"/>
+    </div>
+    <div class="row align-items-center">
+            <h2> Fare Estimate </h2>
+                <p>
+                    The distance of your journey will be approximately <b>{{ dist }}km</b> and the cost of your journey is expected to be <b>${{ cost }}</b>.
+                    The total time to get to your destination will be around <b>{{ timeHour }} {{ hourType }} and {{ timeMinute }} {{ minuteType }}</b>.
+                </p>
+                <br>
+                <div class="container bookButton text-center">
+                    <button class=""{{ 'active' if active_page == 'fareEstimate' else '' }}><a href="/fare">Book another Cab</a></button>
+                </div>
+            </form>
+    </div>
+</div>
+
+{{ super() }}
+{% endblock %}
